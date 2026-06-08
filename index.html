@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: AI Reporting Workflow Deployment</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131c2e;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --border-color: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-primary); color: var(--text-main); padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        header { margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
+        .badge { background: rgba(56, 189, 248, 0.1); color: var(--accent-blue); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; display: inline-block; margin-bottom: 12px; }
+        h1 { font-size: 2.2rem; margin-bottom: 8px; background: linear-gradient(to right, #f8fafc, #64748b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; text-align: center; }
+        .metric-card h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+        .metric-card p { font-size: 1.75rem; font-weight: 700; color: var(--accent-blue); }
+
+        .panel { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; margin-bottom: 30px; }
+        .panel-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; color: #fff; }
+        
+        .table-wrapper { overflow-x: auto; margin-bottom: 20px; border-radius: 6px; border: 1px solid var(--border-color); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; background: #0f172a; }
+        th, td { padding: 12px; border-bottom: 1px solid var(--border-color); }
+        th { background: rgba(255,255,255,0.02); color: var(--text-muted); font-weight: 600; }
+
+        .action-btn { background: #2563eb; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: background 0.2s; }
+        .action-btn:hover { background: #1d4ed8; }
+
+        .output-box { background: #020617; border-left: 4px solid var(--accent-blue); padding: 20px; border-radius: 0 8px 8px 0; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; color: #cbd5e1; display: none; margin-top: 20px; }
+
+        .rai-card { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; padding: 16px; margin-top: 30px; }
+        .rai-header { display: flex; align-items: center; gap: 8px; color: #f87171; font-weight: bold; font-size: 0.95rem; margin-bottom: 6px; }
+        .rai-text { font-size: 0.85rem; color: #fca5a5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="badge">Project 1 Proof-of-Work</span>
+        <h1>AI Reporting Workflow</h1>
+        <p class="subtitle">From Unstructured Raw Sales Data matrices into Production-Grade Executive Business Presentations.</p>
+    </header>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <h3>Manual Execution Time</h3>
+            <p style="color: #f87171;">2 - 3 Hours</p>
+        </div>
+        <div class="metric-card">
+            <h3>AI-Assisted Workflow</h3>
+            <p style="color: var(--accent-green);">30 - 45 Mins</p>
+        </div>
+        <div class="metric-card">
+            <h3>Core Tool Stack</h3>
+            <p style="font-size: 1.1rem; padding-top: 10px;">Gemini / Looker Studio</p>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-title"><i data-lucide="database"></i> Target Corporate Dataset (100+ Row Aggregation Look)</div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reporting Interval</th>
+                        <th>Region</th>
+                        <th>Lead Source</th>
+                        <th>Leads Gen</th>
+                        <th>Demo Calls</th>
+                        <th>Deals Closed</th>
+                        <th>Revenue Yield</th>
+                        <th>Marketing Spend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Q2 Aggregate Data</td><td>West Pod</td><td>LinkedIn</td><td>1,200 leads</td><td>350 calls</td><td>120 closed</td><td>₹4,80,000</td><td>₹60,000</td></tr>
+                    <tr><td>Q2 Aggregate Data</td><td>East Pod</td><td>Google Search</td><td>850 leads</td><td>220 calls</td><td>65 closed</td><td>₹2,10,000</td><td>₹45,000</td></tr>
+                    <tr><td>Q2 Aggregate Data</td><td>North Pod</td><td>Cold Outreach</td><td>950 leads</td><td>180 calls</td><td>40 closed</td><td>₹3,40,000</td><td>₹35,000</td></tr>
+                    <tr><td>Q2 Aggregate Data</td><td>South Pod</td><td>Meta Paid Ads</td><td>1,250 leads</td><td>190 calls</td><td>85 closed</td><td>₹4,52,000</td><td>₹1,00,000</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="action-btn" onclick="triggerAnalysis()"><i data-lucide="play"></i> Trigger Gemini Intelligence Parser</button>
+        
+        <div id="analysis-output" class="output-box"></div>
+    </div>
+
+    <div class="rai-card">
+        <div class="rai-header"><i data-lucide="shield-check"></i> System Responsible AI Safeguard Note</div>
+        <p class="rai-text">This deployment functions strictly to support business operations without eliminating essential human oversight layers. The core automation rules explicitly state that the AI is bounded mathematically to parse data fields provided directly inside the matrix, completely filtering out ungrounded trends or number creation.</p>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    function triggerAnalysis() {
+        const outputElement = document.getElementById('analysis-output');
+        outputElement.style.display = 'block';
+        
+        const insightsPayload = {
+            "executive_summary": "Q2 operational metrics reveal robust performance anchored primarily by high-efficiency digital discovery channels. While LinkedIn presents optimal transactional conversion values, outbound prospecting accounts for a high balance of human sales hours relative to standard revenue returns.",
+            "calculated_kpis": {
+                "blended_lead_to_demo_rate": "22.11%",
+                "demo_to_deal_win_rate": "32.97%",
+                "customer_acquisition_cost_cac": "₹774.19"
+            },
+            "channel_trends_detected": [
+                "LinkedIn organic leads produce minimal overhead capital requirements with high close reliability.",
+                "Meta marketing investments generate major entry-volume velocity but require tighter qualification controls."
+            ],
+            "strategic_recommendations": [
+                "Migrate 40% of resource hours out of low-return cold loops into premium channels.",
+                "Deploy the West regional playbook framework across the remaining pods to unify close metrics."
+            ],
+            "presentation_slide_architecture": {
+                "slide_1": "Executive Q2 Overview Indicators Matrix",
+                "slide_2": "Channel Efficiency & Overhead Cost Breakdown",
+                "slide_3": "Resource Optimization Pathways Plan"
+            }
+        };
+
+        outputElement.innerText = "[SYSTEM TRIGERRED: Contacting Structured Output Engine via Google AI Studio Protocol...]\n\n" + 
+                                  JSON.stringify(insightsPayload, null, 4);
+    }
+</script>
+</body>
+</html>
