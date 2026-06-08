@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1: Dynamic AI Reporting Analyzer</title>
+    <title>Project 1: Truly Dynamic AI Reporting Analyzer</title>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
     <style>
         :root { --bg-primary: #0b0f19; --bg-secondary: #131c2e; --text-main: #f8fafc; --text-muted: #94a3b8; --accent-blue: #38bdf8; --accent-green: #34d399; --border-color: #334155; }
@@ -21,62 +21,81 @@
         .input-group input { background: #0f172a; border: 1px solid var(--border-color); padding: 10px; border-radius: 6px; color: #fff; font-size: 0.9rem; }
         .action-btn { background: #2563eb; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
         .action-btn:hover { background: #1d4ed8; }
-        .output-box { background: #020617; border-left: 4px solid var(--accent-blue); padding: 20px; border-radius: 0 8px 8px 0; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; color: #cbd5e1; display: none; margin-top: 20px; }
+        .output-box { background: #020617; border-left: 4px solid var(--accent-blue); padding: 20px; border-radius: 0 8px 8px 0; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; color: #cbd5e1; display: none; margin-top: 20px; line-height: 1.6; }
     </style>
 </head>
 <body>
 <div class="container">
     <header>
-        <span class="badge">Project 1: Live Dynamic Input Mode</span>
+        <span class="badge">Project 1: Live Structured Output Mode</span>
         <h1>Dynamic AI Reporting Workflow</h1>
-        <p style="color: var(--text-muted);">Enter any operational performance figures below to watch the analytical parsing logic execute dynamically.</p>
+        <p style="color: var(--text-muted);">Enter any raw top-of-funnel operational or sales performance data below to trigger the dynamic parsing engine.</p>
     </header>
 
     <div class="panel">
-        <div class="panel-title"><i data-lucide="edit-3"></i> Input Custom Corporate Metrics</div>
+        <div class="panel-title"><i data-lucide="edit-3"></i> Input Custom Funnel Metrics</div>
         <div class="input-grid">
             <div class="input-group"><label>Raw Leads Generated</label><input type="number" id="p1-leads" value="2500"></div>
             <div class="input-group"><label>Product Demo Calls Held</label><input type="number" id="p1-demos" value="600"></div>
             <div class="input-group"><label>Deals Closed</label><input type="number" id="p1-closes" value="180"></div>
             <div class="input-group"><label>Total Marketing Budget (₹)</label><input type="number" id="p1-spend" value="150000"></div>
         </div>
-        <button class="action-btn" onclick="runDynamicProject1()"><i data-lucide="play"></i> Compute & Parse with Gemini Layer</button>
+        <button class="action-btn" onclick="runTrulyDynamicProject1()"><i data-lucide="play"></i> Compute & Parse with Gemini Layer</button>
         <div id="p1-output" class="output-box"></div>
     </div>
 </div>
+
 <script>
     lucide.createIcons();
-    function runDynamicProject1() {
+
+    function runTrulyDynamicProject1() {
+        // Read input values dynamically
         const leads = parseFloat(document.getElementById('p1-leads').value) || 0;
         const demos = parseFloat(document.getElementById('p1-demos').value) || 0;
         const closes = parseFloat(document.getElementById('p1-closes').value) || 0;
         const spend = parseFloat(document.getElementById('p1-spend').value) || 0;
 
-        const leadToDemo = ((demos / leads) * 100).toFixed(2);
-        const demoToWin = ((closes / demos) * 100).toFixed(2);
-        const cac = (spend / closes).toFixed(2);
+        // Catch edge-case division by zero errors cleanly
+        const leadToDemo = leads > 0 ? ((demos / leads) * 100).toFixed(2) : "0.00";
+        const demoToWin = demos > 0 ? ((closes / demos) * 100).toFixed(2) : "0.00";
+        const cac = closes > 0 ? (spend / closes).toFixed(2) : "0.00";
 
+        // Dynamic analysis grading thresholds based on mathematical results
+        let efficiencyStatus = "Stable Optimization";
+        if (parseFloat(demoToWin) < 15) efficiencyStatus = "Critical Pipeline Velocity Bottleneck";
+        if (parseFloat(demoToWin) > 25) efficiencyStatus = "High-Yield Acquisition Velocity";
+
+        // Build a beautifully formatted, structured output payload mimicking the Gemini API response structure
         const payload = {
-            "executive_summary": `The inputted operational batch processed a top-of-funnel flow of ${leads.toLocaleString()} raw leads, converting smoothly into active sales engagement channels. Unit economics remain highly sustainable based on localized spending baselines.`,
-            "realtime_calculated_kpis": {
-                "lead_to_demo_conversion_rate": `${leadToDemo}%`,
-                "demo_to_deal_win_rate": `${demoToWin}%`,
-                "customer_acquisition_cost_cac": `₹${parseFloat(cac).toLocaleString()}`
+            "system_status": "[SUCCESS: Active schema parameters mapped via Structured JSON rules]",
+            "ingested_volume_summary": {
+                "total_leads_registered": leads.toLocaleString(),
+                "active_engagement_demos": demos.toLocaleString(),
+                "acquired_revenue_contracts": closes.toLocaleString(),
+                "allocated_marketing_overhead": "₹" + spend.toLocaleString()
             },
-            "automated_strategic_insights": [
-                `Your team is maintaining a closing efficiency index of ${demoToWin}% once software demonstrations are locked.`,
-                `Securing a single closed client contract currently demands an aggressive marketing overhead run-rate of ₹${parseFloat(cac).toLocaleString()}.`
+            "realtime_calculated_kpis": {
+                "lead_to_demo_conversion_rate": leadToDemo + "%",
+                "demo_to_deal_win_rate": demoToWin + "%",
+                "customer_acquisition_cost_cac": "₹" + parseFloat(cac).toLocaleString()
+            },
+            "automated_executive_summary": `The ingested dataset tracks a core funnel pipeline processing ${leads.toLocaleString()} potential leads. This operational sequence demonstrates a closing win-rate of ${demoToWin}% once technical demonstrations are completed, indicating an overall environment grade of [${efficiencyStatus}].`,
+            "strategic_intelligence_insights": [
+                `Funnel Progression Friction: Out of all initial target entries, only ${leadToDemo}% successfully transition into active product demonstrations.`,
+                `Unit Economic Run-Rate: Reclaiming or capturing a single active enterprise contract demands a dedicated marketing allocation of ₹${parseFloat(cac).toLocaleString()}.`,
+                `Operational Optimization Step: To scale capital efficiency, management should target reducing the current ₹${parseFloat(cac).toLocaleString()} acquisition overhead by shifting low-performing channels into high-yielding conversion points.`
             ],
-            "presentation_slide_outline": {
-                "slide_1": "Macro Conversion Pipeline & Flow Analysis Overview",
-                "slide_2": `Acquisition Costs Deep-Dive (Current Target: ₹${parseFloat(cac).toLocaleString()} per client)`,
-                "slide_3": "Operational Velocity Recommendations Summary"
+            "executive_presentation_slide_outline": {
+                "slide_1_hero": "Macro Revenue Funnel Analytics & Ingestion Overview",
+                "slide_2_metrics": `Conversion Deep-Dive: Analyzing the Current ${leadToDemo}% Demo Conversion Threshold`,
+                "slide_3_economics": `Unit Economics and CAC Optimization Strategy (Target Baseline: ₹${parseFloat(cac).toLocaleString()} per Customer)`,
+                "slide_4_strategy": `Action Plan: Mitigating Risks and Adjusting Operational Capacity Under the '${efficiencyStatus}' Framework`
             }
         };
 
         const out = document.getElementById('p1-output');
         out.style.display = 'block';
-        out.innerText = "[SYSTEM MESSAGE: Parsing active data variables via Structured JSON parameters...]\n\n" + JSON.stringify(payload, null, 4);
+        out.innerText = "[RUNNING PARSING SIMULATION SCRIPT VIA DECOUPLED DEVELOPER SCHEMA...]\n\n" + JSON.stringify(payload, null, 4);
     }
 </script>
 </body>
